@@ -1,0 +1,82 @@
+{% extends "mysite/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="card card-success">
+            <div class="card-header">Get data from Oracle DB</div>
+            <div class="card-body">
+                <form method="post" id='callproc'>  {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary btn-danger">Call Procedure!!
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <hr class="style-two">
+        <div class="card card-body">
+            <hr>
+            <div class="alert alert-success" role="alert" id="myList">
+                <ul class="list-group" id="listProd">
+                                            {% for datas in data_list %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-sm-1">
+                                                            <p>PLANT: {{ datas.0 }}</p>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <p>FGA Production: {{ datas.1 }}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                </ul>
+            </div>
+
+        <tbody id="prod">
+    	  <!-- Hiện thị kết quả -->
+    	</tbody>
+
+        </div>
+
+        <p></p>
+    </div>
+    <script>
+        function SearchClick() {
+            $.get("/ajax_test/", function (data) {
+                alert(data)
+            });
+        }
+
+        function CallProc() {
+            {#$.ajax(#}
+            {#    {#}
+            {#        type: "GET",#}
+            {#        url: "/proc1/",#}
+            {#        success: function (data) {#}
+            {#alert(data);#}
+            {#        }#}
+            {#    });#}
+        }
+
+        $(document).ready(function () {
+
+            $("#callproc").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/proc1/",
+                    dataType: "json",
+                    success: function (data) {
+                       {#alert(JSON.stringify(data));#}
+                            //DATA
+                       $('#prod').html(data);
+                    }
+                });
+                return false;
+            });
+
+        });
+
+
+    </script>
+{% endblock %}

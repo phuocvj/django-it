@@ -1,0 +1,128 @@
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+.card_production
+{
+	margin: 5px auto;
+	width: 500px;
+	height: 50px;
+	text-align: left;
+	border-radius: 0px;
+	transition: 200ms ease-in-out;
+	box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+.card_custom
+{
+	margin: 12px auto;
+	width: auto;
+	height: 390px;
+	text-align: center;
+	border-radius: 50px;
+	transition: 200ms ease-in-out;
+	box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+.card_custom:hover {
+    cursor: pointer;
+	box-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+.card_custom h1 {
+	color: #fff;
+	padding: 30px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	background: rgba(0,0,0,0.5);
+	box-shadow: 0 0 30px rgba(0,0,0,0.7);
+}
+.box {
+	margin: 12px auto;
+	width: 290px;
+	height: 390px;
+	text-align: center;
+	border-radius: 25px;
+	transition: 200ms ease-in-out;
+	box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+.box:hover {
+  cursor: pointer;
+	margin-bottom: -10px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+.box h1 {
+	color: #fff;
+	padding: 30px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	background: rgba(0,0,0,0.5);
+	box-shadow: 0 0 30px rgba(0,0,0,0.7);
+}
+  .poster {
+    width: 80px;
+    height: 80px;
+
+    position: relative;
+    border-radius: 25px;
+    margin: 250px auto;
+  }
+  .poster h4 {
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 100;
+    position: relative;
+    top: 15px;
+  }
+
+/* POSTER*/
+.p {
+	background: #2b5876;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #e83e8c, #e0a800);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #e83e8c, #e0a800); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	box-shadow: 0 0 20px darkblue;
+}
+li a {
+    color: green;
+}
+body {
+    background: yellow;
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+/*.container-fluid{*/
+/*	padding-top: 60px*/
+/*}*/
+.clock {
+  display: inline-block;
+  list-style-type: none;
+	font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  padding-right: 2em;
+}
+#head
+{
+	color: #e83e8c;
+	font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+.apple-logo {
+	fill: white;
+	display: flex;
+	margin: 0 auto;
+    width: 80px;
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}

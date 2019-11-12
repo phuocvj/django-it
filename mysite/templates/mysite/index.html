@@ -1,0 +1,167 @@
+{% extends "mysite/base.html" %}
+{% block content %}
+    <style>
+    .bgImage {
+            background: url('https://picsum.photos/id/19/200/300');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+
+        <div class="jumbotron">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                 <div class="col text-center">
+                      <h1 id="head">Tết Nguyên Đán</h1>
+                      <ul>
+                        <li class="clock"><span id="days"></span>days</li>
+                        <li class="clock"><span id="hours"></span>Hours</li>
+                        <li class="clock"><span id="minutes"></span>Minutes</li>
+                        <li class="clock"><span id="seconds"></span>Seconds</li>
+                      </ul>
+                    <button class="btn btn-lg btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Feedback
+                    </button>
+                 </div>
+                    <div class="collapse" id="collapseExample">
+                     <hr class="style-two">
+                        <div class="card card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" >Feedback</span>
+                                </div>
+                                {#                      <textarea class="form-control" rows="5" id= "feed" name = "feed"></textarea>#}
+                                <input type="text" class="form-control" id="feed" name="feed" required="true">
+                                <button type="submit" class="btn btn-danger" onclick="Send()">Send</button>
+                            </div>
+                            <hr>
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Nội dung lần cuối Feedback</h4>
+                                <p>
+                                    {% if feedback_list %}
+                                        {% for feedback in feedback_list %}
+                                            {{ feedback.feed }}<br>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>No feedback are available.</p>
+                                    {% endif %}
+                                </p>
+                                <hr>
+                                <p class="mb-0" id="date"></p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+            <!--Data-->
+            {% if person_list %}
+                <div class="wrap">
+                    {% for person in person_list %}
+                        {#            <div class="box three">#}
+                        {# bgImage #}
+                        <div class="box bgImage">
+                            <h1>{{ person.name }}</h1>
+                            <div class="poster p">
+                                <h4>{{ person.id }}</h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No person are available.</p>
+            {% endif %}
+        </div>
+
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            n = new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+            h = n.getHours();
+            m = n.getMinutes();
+            s = n.getSeconds();
+            document.getElementById("date").innerHTML =  h + ":" + m + ":" + s;
+
+
+
+            const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+let countDown = new Date('Jan 29, 2020 00:00:00').getTime(),
+    x = setInterval(function() {
+
+      let now = new Date().getTime(),
+          distance = countDown - now;
+
+        document.getElementById('days').innerText = Math.floor(distance / (day)),
+        document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+
+      //do something later when date is reached
+      if (distance < 0) {
+       clearInterval(x);
+      {#Tet Roi!#}
+      }
+
+    }, second)
+
+
+
+        });
+
+
+        if (document.getElementById) {
+
+            window.onload = swap
+        }
+        ;
+        function swap() {
+            for (var i = 0; i < {{person_list|length}} ; i++) {
+                 x = (Math.floor(Math.random() * 50));
+                 randomimage = (x);
+                 document.getElementsByClassName("bgImage")[i].style.backgroundImage = "url(https://picsum.photos/id/"+randomimage+"/200/300)";
+            }
+        }
+     function Send() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+        })
+
+        Toast.fire({
+            type: 'success',
+            title: 'Cảm ơn bạn đã feedback'
+        })
+    }
+
+     function SearchClick() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+        })
+
+        Toast.fire({
+            type: 'success',
+            title: 'Bạn vừa nhấn nút Search Ở Index'
+        })
+    }
+
+
+    </script>
+{% endblock %}
