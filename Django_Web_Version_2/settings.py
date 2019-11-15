@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from decouple import config, Csv
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,8 +25,13 @@ SECRET_KEY = 'hviu%zoxlj)4gi6hhxz+s8cvcb#j*(4n45h0_t%)r=@g$p3-*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.30.30.41']
+ALLOWED_HOSTS = ['172.30.30.41','herokuapp.com']
 
+SECRET_KEY = config('SECRET_KEY')
+
+DEBUG = config('DEBUG') == 'TRUE'
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
